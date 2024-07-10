@@ -170,7 +170,7 @@ describe('nats@2.x', () => {
     });
   });
 
-  describe('#subscribe (async interator)', () => {
+  describe('#subscribe (async iterator)', () => {
     it('should create a consumer span', async () => {
       const parentSpan = provider.getTracer('default').startSpan('test span');
       await context.with(
@@ -203,7 +203,7 @@ describe('nats@2.x', () => {
   });
 
   describe('#request and #respond (callbacks)', () => {
-    it('creats connected spans for the request/response flow', async () => {
+    it('should create connected spans for the request/response flow', async () => {
       const parentSpan = provider.getTracer('default').startSpan('test span');
       let resolve: (v?: unknown) => void;
       const p = new Promise(r => {
@@ -261,10 +261,10 @@ describe('nats@2.x', () => {
     });
   });
 
-  // Fixme: Uncomment this test once async interators properly persist context
+  // Fixme: Uncomment this test once async iterators properly persist context
   // when calling Msg#respond
-  describe.skip('#request and #respond (async interator)', () => {
-    it('creats connected spans for the request/response flow', async () => {
+  describe.skip('#request and #respond (async iterator)', () => {
+    it('should create connected spans for the request/response flow', async () => {
       const parentSpan = provider.getTracer('default').startSpan('test span');
       const res = await context.with(
         trace.setSpan(context.active(), parentSpan),
